@@ -1,0 +1,33 @@
+{
+  "name": "what-can-i-do",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "A local-first PWA that gives kids structure over the summer holidays and lets them bank pocket money for following the plan.",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "icons": "node scripts/make-icons.mjs"
+  },
+  "dependencies": {
+    "date-fns": "^4.1.0",
+    "idb-keyval": "^6.2.1",
+    "motion": "^11.15.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "sharp": "^0.33.5",
+    "tailwindcss": "^3.4.17",
+    "vite": "^6.0.7",
+    "vite-plugin-pwa": "^0.21.1",
+    "vitest": "^2.1.8"
+  }
+}

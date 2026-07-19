@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------------------------------------------------ *
+ * "Expedition scrapbook" theme — warm kraft paper, ocean teal, with
+ * sunny amber + coral accents. Deliberately not purple-on-white slop.
+ * ------------------------------------------------------------------ */
+:root {
+  /* Palette colours are space-separated RGB channels so Tailwind can inject
+     alpha (e.g. bg-teal-deep/45). Use rgb(var(--x)) when referencing directly. */
+  --paper: 246 239 225;
+  --ink: 38 49 47;
+  --teal: 14 138 138;
+  --teal-deep: 11 87 87;
+  --teal-soft: 207 231 226;
+  --amber: 244 165 43;
+  --coral: 239 111 91;
+  --moss: 122 154 78;
+
+  /* Fixed hex values only used directly in CSS/SVG (no alpha modifiers). */
+  --paper-deep: #ece0c9;
+  --gem: #5aa9e6;
+  --ring-track: #e3d6ba;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  color: rgb(var(--ink));
+  font-family: 'Nunito', system-ui, sans-serif;
+  background-color: rgb(var(--paper));
+  /* Layered atmosphere: warm radial glow + faint "map" dot grid + contour tint */
+  background-image:
+    radial-gradient(120% 90% at 50% -10%, rgba(244, 165, 43, 0.22), transparent 60%),
+    radial-gradient(90% 70% at 110% 10%, rgba(239, 111, 91, 0.12), transparent 55%),
+    radial-gradient(circle at center, rgba(38, 49, 47, 0.06) 1.4px, transparent 1.5px);
+  background-size: 100% 100%, 100% 100%, 22px 22px;
+  background-attachment: fixed;
+  overscroll-behavior: none;
+  user-select: none;
+}
+
+/* Respect the notch / home indicator on iPad + iPhone */
+.safe-b {
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+}
+.safe-t {
+  padding-top: max(0.5rem, env(safe-area-inset-top));
+}
+
+.font-display {
+  font-family: 'Grandstander', system-ui, sans-serif;
+  letter-spacing: -0.01em;
+}
+
+/* A stamped, hand-cut card look */
+.card {
+  background: linear-gradient(180deg, #fffdf6, #fbf5e8);
+  border: 2px solid rgba(38, 49, 47, 0.1);
+  border-radius: 1.4rem;
+  box-shadow: 0 2px 0 0 rgba(23, 42, 42, 0.12), 0 12px 26px -14px rgba(23, 42, 42, 0.4);
+}
+
+.paper-torn {
+  background: repeating-linear-gradient(
+    90deg,
+    var(--paper-deep),
+    var(--paper-deep) 8px,
+    transparent 8px,
+    transparent 16px
+  );
+}
+
+/* Big friendly tap button */
+.btn {
+  font-family: 'Grandstander', system-ui, sans-serif;
+  font-weight: 800;
+  border-radius: 1rem;
+  padding: 0.85rem 1.2rem;
+  transition: transform 0.08s ease, box-shadow 0.08s ease, filter 0.15s ease;
+  box-shadow: 0 4px 0 0 rgba(23, 42, 42, 0.25);
+}
+.btn:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 0 rgba(23, 42, 42, 0.25);
+}
+.btn-primary {
+  background: rgb(var(--teal));
+  color: #fff;
+}
+.btn-amber {
+  background: rgb(var(--amber));
+  color: #3a2a05;
+}
+.btn-ghost {
+  background: transparent;
+  box-shadow: none;
+  color: rgb(var(--teal-deep));
+}
+
+/* Coin & gem chips */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border-radius: 999px;
+  padding: 0.2rem 0.7rem;
+  font-weight: 800;
+}
+
+@keyframes float-up {
+  0% { transform: translateY(0) scale(1); opacity: 0; }
+  15% { opacity: 1; }
+  100% { transform: translateY(-120px) scale(1.15); opacity: 0; }
+}
+
+@keyframes pop-in {
+  0% { transform: scale(0.6); opacity: 0; }
+  70% { transform: scale(1.08); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+}
+
+.now-pulse {
+  animation: pop-in 0.4s ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
