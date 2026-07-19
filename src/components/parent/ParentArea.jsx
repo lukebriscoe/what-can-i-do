@@ -9,18 +9,18 @@ import BankAdmin from './BankAdmin.jsx'
 import Setup from './Setup.jsx'
 
 const SECTIONS = [
+  { id: 'setup', label: 'Setup', icon: '⚙️', C: Setup },
   { id: 'rewards', label: 'Rewards', icon: '🪙', C: Rewards },
   { id: 'schedule', label: 'Schedules', icon: '📋', C: Schedule },
   { id: 'places', label: 'Places', icon: '📍', C: Places },
   { id: 'bank', label: 'Bank', icon: '💷', C: BankAdmin },
-  { id: 'setup', label: 'Setup', icon: '⚙️', C: Setup },
 ]
 
 export default function ParentArea({ onClose }) {
   const { state } = useStore()
   const hasPin = !!state.settings.pin
   const [unlocked, setUnlocked] = useState(!hasPin)
-  const [section, setSection] = useState('rewards')
+  const [section, setSection] = useState('setup')
   const Active = SECTIONS.find((s) => s.id === section).C
 
   return (

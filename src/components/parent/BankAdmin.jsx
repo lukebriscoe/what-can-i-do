@@ -47,7 +47,10 @@ export default function BankAdmin() {
         </div>
       </Section>
 
-      <Section title="Manual adjustment" hint="Add or subtract, e.g. a spontaneous reward or a fine.">
+      <Section
+        title="Manual adjustment"
+        hint={`Add money for a spontaneous reward. To take money away for bad behaviour, put a minus sign in front of the amount, e.g. -${Number(0.5).toFixed(2)}.`}
+      >
         <TextInput
           value={adjNote}
           placeholder="Reason (optional)"
@@ -70,6 +73,13 @@ export default function BankAdmin() {
             Apply
           </Button>
         </div>
+        {adjAmount !== '' && Number(adjAmount) !== 0 && (
+          <p className={`mt-2 text-sm font-bold ${Number(adjAmount) < 0 ? 'text-coral' : 'text-moss'}`}>
+            {Number(adjAmount) < 0
+              ? `➖ This will take ${currency}${Math.abs(Number(adjAmount)).toFixed(2)} away.`
+              : `➕ This will add ${currency}${Number(adjAmount).toFixed(2)}.`}
+          </p>
+        )}
       </Section>
 
       <Section title="Full history" hint="Tap 🗑 to undo any entry.">
