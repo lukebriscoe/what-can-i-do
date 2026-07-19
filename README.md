@@ -4,9 +4,12 @@ A friendly, offline-first web app that gives primary-school kids (roughly 5–11
 bit of structure over the long UK summer holiday — and pays them pocket money for
 following the plan.
 
-The name is the joke: it's the question every kid asks 40 times a day. Now the app
-answers it. They open it, see **what to do now**, tick things off, and **bank real
-pocket money** for completing the day — freeing up parents who are trying to work
+When my kids are on summer holidays and not booked in to clubs, I get asked 
+"what can I do?" 40 times a way. It's code for them to basically say "I'm bored, can
+I go on my screen?". I built this app to answer that question!
+
+They open it, see **what to do now**, tick things off, and **bank real
+pocket money** for completing the day. It frees up parents who are trying to work
 from home and cutting down the reflexive reach for a screen.
 
 > Built for one family, shared for all of them. MIT licensed — fork it, rename it,
