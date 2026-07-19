@@ -23,6 +23,13 @@ export function saveState(state) {
   }, 150)
 }
 
+/** Write immediately, cancelling any pending debounced save. Used when the app
+ *  is backgrounded/closed so the very last change can't be lost. */
+export function flushState(state) {
+  clearTimeout(_saveTimer)
+  return set(KEY, state).catch((err) => console.warn('Flush save failed:', err))
+}
+
 // Forward-compatible: fill in any keys added in later versions.
 function migrate(state) {
   const base = defaultState()

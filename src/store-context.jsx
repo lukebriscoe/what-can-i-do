@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useReducer, useRef, useState } from 'react'
 import { reducer } from './state/reducer.js'
-import { loadState, saveState } from './state/store.js'
+import { loadState, saveState, flushState } from './state/store.js'
 import { defaultState } from './state/defaults.js'
 
 const StoreContext = createContext(null)
@@ -32,6 +32,29 @@ export function StoreProvider({ children }) {
     }
     saveState(state)
   }, [state, ready])
+
+  // Keep the latest state available to the flush-on-exit handler.
+  const latest = useRef(state)
+  useEffect(() => {
+    latest.current = state
+  }, [state])
+
+  // Flush immediately when the app is backgrounded or closed, so the last
+  // change can't be lost to the debounce window. visibilitychange('hidden')
+  // is the reliable signal on mobile; pagehide covers tab close / bfcache.
+  useEffect(() => {
+    if (!ready) return
+    const flushIfHidden = () => {
+      if (document.visibilityState === 'hidden') flushState(latest.current)
+    }
+    const flush = () => flushState(latest.current)
+    document.addEventListener('visibilitychange', flushIfHidden)
+    window.addEventListener('pagehide', flush)
+    return () => {
+      document.removeEventListener('visibilitychange', flushIfHidden)
+      window.removeEventListener('pagehide', flush)
+    }
+  }, [ready])
 
   return (
     <StoreContext.Provider value={{ state, dispatch, ready }}>
