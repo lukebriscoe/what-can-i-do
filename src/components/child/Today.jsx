@@ -91,10 +91,12 @@ export default function Today() {
         <div className="flex-1">
           {complete ? (
             <p className="font-display text-lg font-black text-moss">All done — amazing! 🌟</p>
-          ) : (
+          ) : countable.length > 0 ? (
             <p className="font-display text-lg font-black text-ink">
               {countable.length - doneCount} to go!
             </p>
+          ) : (
+            <p className="font-display text-lg font-black text-ink">Enjoy your day! 🌞</p>
           )}
           {earning ? (
             <p className="mt-1 text-sm font-bold text-ink/60">
@@ -105,8 +107,14 @@ export default function Today() {
               </span>
               {potential === 0 && !complete && ' (weekly limit reached)'}
             </p>
-          ) : (
+          ) : countable.length === 0 ? (
             <p className="mt-1 text-sm font-bold text-ink/50">A day off — just have fun! 😎</p>
+          ) : complete ? (
+            <p className="mt-1 text-sm font-bold text-moss">You did the whole plan — superstar! 🌟</p>
+          ) : (
+            <p className="mt-1 text-sm font-bold text-ink/60">
+              No coins today, but let's smash the plan! 💪
+            </p>
           )}
         </div>
       </div>
