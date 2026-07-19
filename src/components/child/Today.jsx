@@ -113,7 +113,7 @@ export default function Today() {
             <p className="mt-1 text-sm font-bold text-moss">You did the whole plan — superstar! 🌟</p>
           ) : (
             <p className="mt-1 text-sm font-bold text-ink/60">
-              No coins today, but let's smash the plan! 💪
+              You can do it! Let's finish your day! 🌟
             </p>
           )}
         </div>
