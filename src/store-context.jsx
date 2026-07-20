@@ -23,6 +23,13 @@ export function StoreProvider({ children }) {
     }
   }, [])
 
+  // Ask the browser to keep our data around. On iOS home-screen web apps this
+  // helps stop the OS evicting IndexedDB when the app is closed (a cause of
+  // "it reset overnight"). Best-effort; ignored where unsupported.
+  useEffect(() => {
+    navigator.storage?.persist?.().catch(() => {})
+  }, [])
+
   // Persist on every change (after the initial hydrate).
   useEffect(() => {
     if (!ready) return

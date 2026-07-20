@@ -7,7 +7,12 @@ const KEY = 'wcid-state-v1'
 export async function loadState() {
   try {
     const saved = await get(KEY)
-    if (saved && saved.version >= 1) return migrate(saved)
+    // A real saved state always has `settings` + `days`; migrate() fills any
+    // gaps. NOTE: this previously checked `saved.version`, which never existed
+    // (the version lives at `saved.meta.version`) — so saved data was ALWAYS
+    // ignored and the app reset to defaults on every fresh load. That was the
+    // storage bug: configuration written overnight was discarded on reopen.
+    if (saved && saved.settings && saved.days) return migrate(saved)
   } catch (err) {
     console.warn('Could not read saved state, starting fresh:', err)
   }
