@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { useStore } from '../../store-context.jsx'
 import { defaultState } from '../../state/defaults.js'
+import { demoState } from '../../state/demo.js'
 import { exportState, importStateFromFile } from '../../state/backup.js'
 import { Section, Row, TextInput, NumberInput, Button } from './controls.jsx'
 
@@ -127,6 +128,24 @@ export default function Setup() {
         {importMsg && (
           <p className={`mt-2 text-sm font-bold ${importMsg.ok ? 'text-moss' : 'text-coral'}`}>{importMsg.text}</p>
         )}
+      </Section>
+
+      <Section title="See an example" hint="Fills the app with an example family (a planned week, banked money, bonuses) so you can explore how it all works.">
+        <Button
+          variant="amber"
+          className="w-full"
+          onClick={() => {
+            if (
+              confirm(
+                'Load the example setup? This replaces your current data. Export a backup first if you want to keep it.'
+              )
+            ) {
+              dispatch({ type: 'hydrate', state: demoState() })
+            }
+          }}
+        >
+          ✨ Load example setup
+        </Button>
       </Section>
 
       <Section title="Danger zone">

@@ -16,14 +16,18 @@ export function defaultTemplates() {
     name: 'At home',
     activities: [
       activity('🚿', 'Shower & have breakfast', { chore: true, time: '08:00' }),
-      activity('🛏️', 'Make your bed & get dressed', { chore: true }),
-      activity('📚', 'Reading time', { time: '09:30' }),
-      activity('🌳', 'Outdoor play or in the garden', { time: '10:30' }),
-      activity('🧩', 'Learning quest — a puzzle or worksheet', { time: '11:30' }),
-      activity('🍎', 'Help make lunch & clear up', { chore: true, time: '12:30' }),
-      activity('🎨', 'Make something — draw, build or craft', { time: '14:00' }),
-      activity('🧸', 'Tidy your toys away', { chore: true, time: '17:00' }),
-      activity('📺', 'Free choice / screen time', { counts: false, time: '17:30' }),
+      activity('🛏️', 'Make your bed & get dressed', { chore: true, time: '08:30' }),
+      activity('🍽️', 'Do the dishwasher', { chore: true, time: '08:45' }),
+      activity('📚', 'Reading time', { time: '09:00' }),
+      activity('🌳', 'Outdoor play or in the garden', { time: '09:30' }),
+      activity('🧩', 'Puzzles, workbooks or colouring', { time: '10:30' }),
+      activity('🍎', 'Help make lunch & clear up', { chore: true, time: '11:45' }),
+      activity('🎨', 'Drawing, building, crafting', { chore: true, time: '13:00' }),
+      activity('📺', 'Free choice / screen time', { counts: false, time: '14:00' }),
+      activity('🌳', 'Outdoor play or in the garden', { time: '15:00' }),
+      activity('🧸', 'Tidy up everything', { chore: true, time: '16:30' }),
+      activity('🍔', 'Help get ready for dinner', { chore: true, time: '17:00' }),
+  
     ],
   }
   const grandparents = {
@@ -41,7 +45,7 @@ export function defaultTemplates() {
     id: 'tpl_summer',
     name: 'Summer club',
     activities: [
-      activity('🎒', 'Pack your bag', { chore: true }),
+      activity('🎒', 'Pack your bag (lunch and water)', { chore: true }),
       activity('🎉', 'Join in and make a friend'),
       activity('🗣️', 'Tell us one thing you did'),
     ],

@@ -17,6 +17,9 @@ from home and cuts down the reflexive reach for a screen.
 
 **👉 Try it now: [lukebriscoe.com/what-can-i-do](https://lukebriscoe.com/what-can-i-do/)**
 
+🚀 **In a hurry? Read the [5-minute Quick Start guide](QUICKSTART.md).** Or open the
+app and tap **⚙️ → See an example → Load example setup** to explore a filled-in demo.
+
 ---
 
 ## 👩‍👦 For grown-ups — getting started
